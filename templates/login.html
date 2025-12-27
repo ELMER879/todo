@@ -1,24 +1,61 @@
 <!DOCTYPE html>
+<!-- Tells the browser this is an HTML5 document -->
+
 <html lang="en">
+<!-- Starts the HTML page and sets language to English -->
+
 <head>
+    <!-- Character encoding so text displays correctly -->
     <meta charset="UTF-8">
+
+    <!-- Title shown on browser tab -->
     <title>Login</title>
+
+    <!-- Makes the page scale correctly on phones (VERY important for iPhone) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to your external CSS file -->
+    <!-- Flask uses url_for() to find the correct static file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
+<!-- Everything visible on the page goes inside <body> -->
 
-<div class="auth-container">
-    <h2>Login</h2>
+    <!-- Main white card container for login -->
+    <div class="auth-container">
 
-    <form method="POST">
-        <input name="username" placeholder="Username" required>
-        <input name="password" type="password" placeholder="Password" required>
-        <button>Login</button>
-    </form>
+        <!-- Page heading -->
+        <h2>Login</h2>
 
-    <a href="/signup">Create an account</a>
-</div>
+        <!-- Login form -->
+        <!-- method="POST" sends data securely to Flask -->
+        <form method="POST">
+
+            <!-- Username input field -->
+            <!-- "name" is used by Flask to read the value -->
+            <input 
+                name="username" 
+                placeholder="Username" 
+                required
+            >
+
+            <!-- Password input field -->
+            <!-- type="password" hides typed characters -->
+            <input 
+                name="password" 
+                type="password" 
+                placeholder="Password" 
+                required
+            >
+
+            <!-- Submit button -->
+            <button>Login</button>
+        </form>
+
+        <!-- Link to signup page -->
+        <a href="/signup">Create an account</a>
+    </div>
 
 </body>
 </html>

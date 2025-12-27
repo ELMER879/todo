@@ -1,124 +1,296 @@
+/* =========================
+   GLOBAL PAGE STYLES
+========================= */
+
+/* Style the whole page */
 body {
+    /* Use system fonts (looks native on iPhone, Mac, Windows) */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+
+    /* Light gray background for the page */
     background: #f2f2f7;
+
+    /* Remove default browser spacing */
     margin: 0;
+
+    /* Space inside the page */
     padding: 20px;
 }
 
+
+/* =========================
+   MAIN APP CONTAINER
+========================= */
+
+/* Main app box (white card) */
 .app {
+    /* Limit width so it looks like a mobile app */
     max-width: 420px;
+
+    /* Center the app horizontally */
     margin: auto;
+
+    /* White background */
     background: white;
+
+    /* Space inside the box */
     padding: 20px;
+
+    /* Rounded corners */
     border-radius: 16px;
+
+    /* Soft shadow to lift the card */
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
+
+/* =========================
+   HEADINGS
+========================= */
+
+/* Main title */
 h1 {
+    /* Center the text */
     text-align: center;
+
+    /* Space below the title */
     margin-bottom: 20px;
 }
 
+
+/* =========================
+   FORM (ADD TASK)
+========================= */
+
+/* Layout the form items in one row */
 form {
+    /* Flexbox makes items align nicely */
     display: flex;
+
+    /* Space between input and button */
     gap: 8px;
 }
 
+
+/* Text input field */
 input[type="text"] {
+    /* Take remaining space */
     flex: 1;
+
+    /* Inner spacing */
     padding: 12px;
+
+    /* Text size */
     font-size: 16px;
+
+    /* Rounded corners */
     border-radius: 10px;
+
+    /* Light gray border */
     border: 1px solid #ccc;
 }
 
+
+/* =========================
+   BUTTON STYLES
+========================= */
+
+/* Buttons (Add, Login, Signup, etc.) */
 button {
+    /* Space inside the button */
     padding: 12px 16px;
+
+    /* Text size */
     font-size: 16px;
+
+    /* Rounded corners */
     border-radius: 10px;
+
+    /* Remove default border */
     border: none;
+
+    /* iOS blue color */
     background: #007aff;
+
+    /* White text */
     color: white;
+
+    /* Show pointer on hover */
     cursor: pointer;
 }
 
+/* Button hover effect */
 button:hover {
+    /* Darker blue when hovered */
     background: #005fd1;
 }
 
+
+/* =========================
+   TASK LIST
+========================= */
+
+/* Task list container */
 ul {
+    /* Remove bullet points */
     list-style: none;
+
+    /* Remove default padding */
     padding: 0;
+
+    /* Space above list */
     margin-top: 20px;
 }
 
+
+/* Individual task item */
 li {
+    /* Align task text and buttons */
     display: flex;
+
+    /* Space between text and action */
     justify-content: space-between;
+
+    /* Vertically center items */
     align-items: center;
+
+    /* Light background */
     background: #f9f9f9;
+
+    /* Inner spacing */
     padding: 12px;
+
+    /* Rounded corners */
     border-radius: 10px;
+
+    /* Space between tasks */
     margin-bottom: 10px;
 }
 
+
+/* Delete link */
 a {
+    /* Remove underline */
     text-decoration: none;
+
+    /* Red color for delete */
     color: #ff3b30;
+
+    /* Make text bold */
     font-weight: bold;
 }
+
 
 /* =========================
    AUTH (LOGIN & SIGNUP)
 ========================= */
 
+/* Login & signup card */
 .auth-container {
+    /* Limit width */
     max-width: 350px;
+
+    /* Center vertically with spacing */
     margin: 80px auto;
+
+    /* Inner spacing */
     padding: 25px;
+
+    /* White background */
     background: #ffffff;
+
+    /* Rounded corners */
     border-radius: 12px;
+
+    /* Soft shadow */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    /* Center text */
     text-align: center;
 }
 
+
+/* Login / Signup title */
 .auth-container h2 {
+    /* Space below title */
     margin-bottom: 20px;
+
+    /* Dark gray text */
     color: #333;
 }
 
+
+/* Input fields in auth forms */
 .auth-container input {
+    /* Full width input */
     width: 100%;
+
+    /* Inner spacing */
     padding: 12px;
+
+    /* Space between inputs */
     margin-bottom: 12px;
+
+    /* Light border */
     border: 1px solid #ddd;
+
+    /* Rounded corners */
     border-radius: 8px;
+
+    /* Text size */
     font-size: 16px;
 }
 
+
+/* Auth buttons */
 .auth-container button {
+    /* Full width button */
     width: 100%;
+
+    /* Inner spacing */
     padding: 12px;
+
+    /* Blue background */
     background: #007aff;
+
+    /* White text */
     color: white;
+
+    /* Remove border */
     border: none;
+
+    /* Rounded corners */
     border-radius: 8px;
+
+    /* Text size */
     font-size: 16px;
+
+    /* Pointer cursor */
     cursor: pointer;
 }
 
+/* Hover effect for auth buttons */
 .auth-container button:hover {
     background: #005fcc;
 }
 
+
+/* Links under auth forms */
 .auth-container a {
+    /* Put link on new line */
     display: block;
+
+    /* Space above link */
     margin-top: 12px;
+
+    /* Blue color */
     color: #007aff;
+
+    /* Remove underline */
     text-decoration: none;
 }
 
+/* Hover underline */
 .auth-container a:hover {
     text-decoration: underline;
 }
-

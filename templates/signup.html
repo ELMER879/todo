@@ -1,24 +1,61 @@
 <!DOCTYPE html>
+<!-- Tells the browser this is an HTML5 document -->
+
 <html lang="en">
+<!-- Starts the HTML page and sets the language to English -->
+
 <head>
+    <!-- Character encoding to display text correctly -->
     <meta charset="UTF-8">
+
+    <!-- Title shown on browser tab -->
     <title>Sign Up</title>
+
+    <!-- Makes page responsive on phones (especially iPhone) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to your external CSS file -->
+    <!-- Flask uses url_for() to find static files correctly -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
+<!-- Everything visible on the page goes inside <body> -->
 
-<div class="auth-container">
-    <h2>Sign Up</h2>
+    <!-- Main white card container for signup form -->
+    <div class="auth-container">
 
-    <form method="POST">
-        <input name="username" placeholder="Username" required>
-        <input name="password" type="password" placeholder="Password" required>
-        <button>Create Account</button>
-    </form>
+        <!-- Page heading -->
+        <h2>Sign Up</h2>
 
-    <a href="/login">Already have an account?</a>
-</div>
+        <!-- Signup form -->
+        <!-- method="POST" sends data to Flask server securely -->
+        <form method="POST">
+
+            <!-- Username input field -->
+            <!-- "name" is how Flask reads this field -->
+            <input 
+                name="username" 
+                placeholder="Username" 
+                required
+            >
+
+            <!-- Password input field -->
+            <!-- type="password" hides characters as user types -->
+            <input 
+                name="password" 
+                type="password" 
+                placeholder="Password" 
+                required
+            >
+
+            <!-- Submit button -->
+            <button>Create Account</button>
+        </form>
+
+        <!-- Link to login page -->
+        <a href="/login">Already have an account?</a>
+    </div>
 
 </body>
 </html>
