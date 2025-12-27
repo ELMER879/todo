@@ -50,24 +50,13 @@
     <!-- ================= TASK LIST SECTION ================= -->
     <!-- Unordered list that will show all tasks -->
     <ul>
+    {% for task in tasks %}
+        <li>
+            {{ task[1] }}
+            <a href="/delete/{{ task[0] }}">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
 
-        <!-- Start looping through tasks sent from Python -->
-        {% for task in tasks %}
-
-            <!-- Each task becomes one list item -->
-            <li>
-
-                <!-- Display the task text -->
-                {{ task[1] }}
-
-
-                
-
-            </li>
-
-        <!-- End of the loop -->
-        {% endfor %}
-
-    </ul>
 </body>
 </html>
