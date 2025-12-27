@@ -67,20 +67,6 @@ def index():
 
 
 
-@app.route("/toggle/<int:task_id>")
-def toggle_task(task_id):
-    db = get_db()
-
-    # Switch done from 0 → 1 or 1 → 0
-    db.execute("""
-        UPDATE tasks
-        SET done = CASE WHEN done = 0 THEN 1 ELSE 0 END
-        WHERE id = ?
-    """, (task_id,))
-
-    db.commit()
-    return redirect("/")
-
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
