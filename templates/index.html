@@ -58,11 +58,10 @@
             <li>
 
                 <!-- Display the task text -->
-                {{ task }}
+                {{ task[1] }}
 
-                <!-- Delete link that tells Flask which task to remove -->
-                <!-- loop.index0 gives the task number (0, 1, 2, etc.) -->
-                <a href="/delete/{{ loop.index0 }}">Delete</a>
+
+                
 
             </li>
 

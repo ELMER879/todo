@@ -9,9 +9,22 @@ from flask import Flask, render_template, request, redirect
 # __name__ tells Flask where this file is located
 app = Flask(__name__)
 
-# This list will store all the tasks the user adds
-# Example: ["Buy milk", "Study Python"]
-tasks = []
+with get_db() as db:
+    db.execute("""
+        CREATE TABLE IF NOT EXISTS tasks (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT
+        )
+    """)
+
+
+
+# sqlite storage snippet
+import sqlite3
+
+def get_db():
+    return sqlite3.connect("tasks.db")
+
 
 # ------------------ MAIN PAGE ROUTE ------------------
 # This route runs when someone visits "/"
@@ -19,37 +32,36 @@ tasks = []
 # and submitting the form (POST)
 @app.route("/", methods=["GET", "POST"])
 def index():
+    db = get_db()
 
-    # Check if the user submitted the form
     if request.method == "POST":
-
-        # Get the text entered in the input field named "task"
         task = request.form.get("task")
-
-        # Make sure the input is not empty
         if task:
-            # Add the task to the tasks list
-            tasks.append(task)
-
-        # Refresh the page so the new task appears
+            db.execute("INSERT INTO tasks (name) VALUES (?)", (task,))
+            db.commit()
         return redirect("/")
 
-    # Show the HTML page and send the tasks list to it
+    tasks = db.execute("SELECT * FROM tasks").fetchall()
     return render_template("index.html", tasks=tasks)
+
 
 # ------------------ DELETE TASK ROUTE ------------------
 # This route runs when clicking "Delete"
 # <int:index> is the task number to delete
 @app.route("/delete/<int:index>")
 def delete_task(index):
+    db = get_db()
+    db.execute("DELETE FROM tasks WHERE id = ?", (index,))
+    db.commit()
+    return redirect("/")
+
 
     # Make sure the index exists in the list
     if 0 <= index < len(tasks):
-        # Remove the task from the list
-        tasks.pop(index)
+        db = get_db()
+db.execute("DELETE FROM tasks WHERE id = ?", (index,))
+db.commit()
 
-    # Go back to the main page
-    return redirect("/")
 
 # ------------------ RUN THE APP ------------------
 # This part runs the app when you start it
