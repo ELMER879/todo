@@ -52,10 +52,23 @@
     <ul>
     {% for task in tasks %}
         <li>
-            {{ task[1] }}
+
+            <!-- Checkbox -->
+            <input type="checkbox"
+                   {% if task[2] == 1 %}checked{% endif %}
+                   onclick="window.location.href='/toggle/{{ task[0] }}'">
+
+            <!-- Task text -->
+            <span {% if task[2] == 1 %}style="text-decoration: line-through;"{% endif %}>
+                {{ task[1] }}
+            </span>
+
+            <!-- Delete button -->
             <a href="/delete/{{ task[0] }}">Delete</a>
+
         </li>
     {% endfor %}
 </ul>
+
 </body>
 </html>

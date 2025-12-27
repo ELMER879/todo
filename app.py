@@ -14,9 +14,11 @@ app = Flask(__name__)
 with get_db() as db:
     db.execute("""
         CREATE TABLE IF NOT EXISTS tasks (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT
-        )
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    done INTEGER DEFAULT 0
+)
+
     """)
 
 # ------------------ MAIN PAGE ------------------
@@ -41,6 +43,21 @@ def delete_task(index):
     db.execute("DELETE FROM tasks WHERE id = ?", (index,))
     db.commit()
     return redirect("/")
+
+@app.route("/toggle/<int:task_id>")
+def toggle_task(task_id):
+    db = get_db()
+
+    # Switch done from 0 → 1 or 1 → 0
+    db.execute("""
+        UPDATE tasks
+        SET done = CASE WHEN done = 0 THEN 1 ELSE 0 END
+        WHERE id = ?
+    """, (task_id,))
+
+    db.commit()
+    return redirect("/")
+
 
 # ------------------ RUN APP ------------------
 if __name__ == "__main__":
