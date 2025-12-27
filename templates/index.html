@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My To-Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="My To-Do List">
+
+<link rel="apple-touch-icon" href="{{ url_for('static', filename='icon-192.png') }}">
+
+
+    <!-- Link external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>My To-Do List</h1>
+
+
+    <!--this is a form snippet-->
+    <form method="POST">
+        <input type="text" name="task" placeholder="Enter a task">
+        <button type="submit">Add Task</button>
+    </form>
+
+
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task }} 
+                <a href="/delete/{{ loop.index0 }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
