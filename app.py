@@ -65,13 +65,7 @@ def index():
     return render_template("index.html", tasks=tasks)
 
 
-# ------------------ DELETE TASK ------------------
-@app.route("/delete/<int:index>")
-def delete_task(index):
-    db = get_db()
-    db.execute("DELETE FROM tasks WHERE id = ?", (index,))
-    db.commit()
-    return redirect("/")
+
 
 @app.route("/toggle/<int:task_id>")
 def toggle_task(task_id):
