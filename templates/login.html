@@ -1,7 +1,24 @@
-<h2>Login</h2>
-<form method="POST">
-  <input name="username" placeholder="Username">
-  <input name="password" type="password" placeholder="Password">
-  <button>Login</button>
-</form>
-<a href="/signup">Sign up</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="auth-container">
+    <h2>Login</h2>
+
+    <form method="POST">
+        <input name="username" placeholder="Username" required>
+        <input name="password" type="password" placeholder="Password" required>
+        <button>Login</button>
+    </form>
+
+    <a href="/signup">Create an account</a>
+</div>
+
+</body>
+</html>
