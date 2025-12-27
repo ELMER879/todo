@@ -1,6 +1,24 @@
+# ==========================
+# Render deployment settings
+# ==========================
+
 services:
-  - type: web
-    name: todo-flask
-    env: python
+  - type: web          # This tells Render that we are deploying a web service (a website/app)
+    name: todo-flask   # Name of your app on Render
+    env: python        # The environment is Python (we're using Flask)
+    
+    # -------------------
+    # Build command
+    # -------------------
+    # This tells Render how to install the required Python packages
+    # It reads from requirements.txt which lists Flask and Gunicorn
     buildCommand: pip install -r requirements.txt
+    
+    # -------------------
+    # Start command
+    # -------------------
+    # This tells Render how to start your app
+    # gunicorn app:app means:
+    # - "app" (first) → the file name: app.py
+    # - "app" (second) → the Flask variable inside app.py (app = Flask(__name__))
     startCommand: gunicorn app:app

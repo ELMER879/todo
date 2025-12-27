@@ -1,39 +1,74 @@
 <!DOCTYPE html>
+<!-- Tells the browser this is an HTML5 document -->
+
 <html lang="en">
+<!-- Starts the HTML document, language is English -->
+
 <head>
     <meta charset="UTF-8">
+    <!-- Allows proper display of letters, symbols, and emojis -->
+
     <title>My To-Do List</title>
+    <!-- The text shown on the browser tab -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Makes the page responsive on phones and tablets -->
+
+    <!-- PWA manifest file (tells the browser this can be installed like an app) -->
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="My To-Do List">
+    <!-- Allows the app to run like a real app on iPhone -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
-<link rel="apple-touch-icon" href="{{ url_for('static', filename='icon-192.png') }}">
+    <!-- Controls the iPhone status bar style -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
+    <!-- Name shown when the app is installed on iPhone home screen -->
+    <meta name="apple-mobile-web-app-title" content="My To-Do List">
 
-    <!-- Link external CSS -->
+    <!-- App icon for iPhone home screen -->
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icon-192.png') }}">
+
+    <!-- Link to the external CSS file for styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
+    <!-- Main title shown on the page -->
     <h1>My To-Do List</h1>
 
-
-    <!--this is a form snippet-->
+    <!-- ================= FORM SECTION ================= -->
+    <!-- This form sends data to Flask when you add a task -->
     <form method="POST">
+        <!-- Text input where the user types a task -->
         <input type="text" name="task" placeholder="Enter a task">
+
+        <!-- Button that submits the form -->
         <button type="submit">Add Task</button>
     </form>
 
-
+    <!-- ================= TASK LIST SECTION ================= -->
+    <!-- Unordered list that will show all tasks -->
     <ul>
+
+        <!-- Start looping through tasks sent from Python -->
         {% for task in tasks %}
-            <li>{{ task }} 
+
+            <!-- Each task becomes one list item -->
+            <li>
+
+                <!-- Display the task text -->
+                {{ task }}
+
+                <!-- Delete link that tells Flask which task to remove -->
+                <!-- loop.index0 gives the task number (0, 1, 2, etc.) -->
                 <a href="/delete/{{ loop.index0 }}">Delete</a>
+
             </li>
+
+        <!-- End of the loop -->
         {% endfor %}
+
     </ul>
 </body>
 </html>

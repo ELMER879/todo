@@ -1,2 +1,8 @@
 Flask
+# Flask is the Python framework we use to create the web app.
+# It handles routing, templates, forms, and more.
+
 gunicorn
+# Gunicorn is a production web server for Python.
+# It runs the Flask app on Render (or any server) efficiently.
+# Better than Flask's built-in debug server for real deployment.
